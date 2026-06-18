@@ -300,14 +300,54 @@ fn parse_token_created(logs: &RpcLogsResponse, _program_id: Pubkey) -> Option<To
 }
 
 fn to_fixed_6(txt: &str) -> Result<u64> {
-    // TODO(student): parse a decimal string into an integer with 6 fixed decimals.
-    // Examples:
-    // - "120" -> 120_000_000
-    // - "120.12" -> 120_120_000
-    // - "0.000001" -> 1
-    // Extra digits after the 6th decimal place should be truncated, not rounded.
-    let _ = txt;
-    todo!("student task: implement fixed-6 parser")
+    let txt = txt.trim();
+    let dot_pos = txt.find('.');
+    let (int_part, frac_part) = if let Some(pos) = dot_pos {
+        let int = &txt[..pos];
+        let frac = &txt[pos + 1..];
+        (int, frac)
+    } else {
+        (txt, "")
+    };
+
+    if int_part.is_empty() {
+        return Err(anyhow!("empty integer part"));
+    }
+    if !int_part.chars().all(|c| c.is_ascii_digit()) {
+        return Err(anyhow!("non-digit in integer part"));
+    }
+    if !frac_part.chars().all(|c| c.is_ascii_digit()) {
+        return Err(anyhow!("non-digit in fractional part"));
+    }
+
+    let int_val: u64 = int_part
+        .parse()
+        .map_err(|_| anyhow!("integer part overflow"))?;
+    let int_scaled = int_val
+        .checked_mul(1_000_000)
+        .ok_or_else(|| anyhow!("overflow scaling integer part"))?;
+
+    let frac_len = frac_part.len();
+    let frac_truncated = if frac_len > 6 {
+        &frac_part[..6]
+    } else {
+        frac_part
+    };
+
+    let frac_mult = 10u64.checked_pow(6 - frac_truncated.len() as u32).unwrap_or(1);
+    let frac_val: u64 = if frac_truncated.is_empty() {
+        0
+    } else {
+        frac_truncated
+            .parse::<u64>()
+            .map_err(|_| anyhow!("fractional part overflow"))?
+            .checked_mul(frac_mult)
+            .ok_or_else(|| anyhow!("overflow scaling fractional part"))?
+    };
+
+    int_scaled
+        .checked_add(frac_val)
+        .ok_or_else(|| anyhow!("overflow adding fractional part"))
 }
 
 #[cfg(test)]
@@ -338,9 +378,7 @@ mod tests {
 
     #[test]
     fn to_fixed_6_truncates_fraction_to_six_digits() {
-        // TODO(student): this assertion is intentionally wrong.
-        // The parser is expected to truncate after 6 digits instead of rounding.
-        assert_eq!(to_fixed_6("1.1234569").unwrap(), 1_123_457);
+        assert_eq!(to_fixed_6("1.1234569").unwrap(), 1_123_456);
     }
 
     #[test]
