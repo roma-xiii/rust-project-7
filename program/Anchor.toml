@@ -6,12 +6,12 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-sol_usd_oracle = "4cuvLFFqhaKnTHfeq2FtTUvgudRSe7wq982fA9PBUqBU"
-token_minter = "E5erGzaxgCwHqH7RjLXLGWziXj8CXpyN7zW6BRodfFnE"
+sol_usd_oracle = "7FnhGUwup3jsqUqufQJcA8VmwdeEHHfKDELNSiAVcTJR"
+token_minter = "55juciJDpgm2RAtWwak7UXLZuNqULKT6w2LMo5VoU7nx"
 
 [programs.localnet]
-sol_usd_oracle = "3Jb6YRQCvYsc9pW1mXMw8NcQLmKp45KpmfRX61TgKG18"
-token_minter = "2qsARZ8zuz1391b7PZtHey9tzdtircBECcn4n6a4yKtT"
+sol_usd_oracle = "7FnhGUwup3jsqUqufQJcA8VmwdeEHHfKDELNSiAVcTJR"
+token_minter = "55juciJDpgm2RAtWwak7UXLZuNqULKT6w2LMo5VoU7nx"
 
 [provider]
 cluster = "localnet"

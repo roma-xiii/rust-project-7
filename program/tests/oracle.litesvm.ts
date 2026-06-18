@@ -13,7 +13,7 @@ const oracleIdl = require("../target/idl/sol_usd_oracle.json");
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const ORACLE_PROGRAM_ID = new PublicKey("3Jb6YRQCvYsc9pW1mXMw8NcQLmKp45KpmfRX61TgKG18");
+const ORACLE_PROGRAM_ID = new PublicKey("7FnhGUwup3jsqUqufQJcA8VmwdeEHHfKDELNSiAVcTJR");
 const ORACLE_SO = path.resolve(__dirname, "../target/deploy/sol_usd_oracle.so");
 const ORACLE_SEED = Buffer.from("oracle_state");
 
