@@ -1,3 +1,17 @@
+## Deployed Contracts (Devnet)
+
+| Контракт | Program ID |
+|----------|-----------|
+| SOLUSDT Oracle | `7FnhGUwup3jsqUqufQJcA8VmwdeEHHfKDELNSiAVcTJR` |
+| Token Minter | `55juciJDpgm2RAtWwak7UXLZuNqULKT6w2LMo5VoU7nx` |
+| Oracle State PDA | `7LEFykYgt5s19REBN8CdwTfLNGAwuQtKDnHKp5sDP33m` |
+
+## Successful Mint Transactions (Devnet)
+
+- https://explorer.solana.com/tx/HXtYASxGQ5vPWbE57w3FSefSmUH2AJHNza4kAU43zhd5tE8yxRDqRxp3JF6vAj269pG2nPHvHGTFZrD2iukGLcm?cluster=devnet
+- https://explorer.solana.com/tx/4Adm2XwaFCL6MqXMNvC65BfS1tFDMkGwJG9oLAe94f6bdWHtZFnh7je3ssCnYqsVx7zzvwY2ND9gfmr7UJP7631T?cluster=devnet
+- https://explorer.solana.com/tx/5CiaZHRPGbrvgWDrEeMbifqzE8jvuG1kFxVJpHrN9WhcyTCWuxJZrEq979j5vPVFqmBYher2uZKXZWAZooyphpHM?cluster=devnet
+
 # Solana Mini Launchpad
 
 Учебный мини-лаунчпад на Solana + Anchor: два on-chain контракта (SOL/USD oracle и token minter), Rust backend для обновления цены и прослушки событий, а также Remix фронтенд (папка `frontend/`).
