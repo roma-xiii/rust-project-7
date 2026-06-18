@@ -5,16 +5,13 @@ package_manager = "yarn"
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-sol_usd_oracle = "4cuvLFFqhaKnTHfeq2FtTUvgudRSe7wq982fA9PBUqBU"
-token_minter = "E5erGzaxgCwHqH7RjLXLGWziXj8CXpyN7zW6BRodfFnE"
-
 [programs.devnet]
 sol_usd_oracle = "4cuvLFFqhaKnTHfeq2FtTUvgudRSe7wq982fA9PBUqBU"
 token_minter = "E5erGzaxgCwHqH7RjLXLGWziXj8CXpyN7zW6BRodfFnE"
 
-[registry]
-url = "https://api.apr.dev"
+[programs.localnet]
+sol_usd_oracle = "3Jb6YRQCvYsc9pW1mXMw8NcQLmKp45KpmfRX61TgKG18"
+token_minter = "2qsARZ8zuz1391b7PZtHey9tzdtircBECcn4n6a4yKtT"
 
 [provider]
 cluster = "localnet"
@@ -23,3 +20,5 @@ wallet = "~/.config/solana/id.json"
 [scripts]
 litesvm = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 \"tests/**/*.ts\""
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 \"tests/**/*.ts\""
+
+[hooks]
